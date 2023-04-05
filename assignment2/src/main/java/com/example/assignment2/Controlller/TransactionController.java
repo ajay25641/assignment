@@ -1,0 +1,40 @@
+package com.example.assignment2.Controlller;
+
+import com.example.assignment2.Model.Transaction;
+import com.example.assignment2.Service.TransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+@RestController
+public class TransactionController {
+
+
+    @Autowired
+    TransactionService transactionService;
+
+    @RequestMapping("/gettransactiondetails")
+    public void getTransactionDetails(){
+        List<Transaction>transactionList=transactionService.getTransactionDetails();
+        ModelAndView modelAndView=new ModelAndView("home.html");
+        modelAndView.addObject("transactonList",transactionList);
+
+        for(Transaction transaction:transactionList){
+            System.out.println(transaction.getCustomerId()+" "+transaction.getValue());
+        }
+        //return modelAndView;
+    }
+
+
+    @RequestMapping(value="/addtransaction",method = POST)
+    public void addTransaction(Transaction transaction){
+         transactionService.addTransaction(transaction);
+    }
+
+}
