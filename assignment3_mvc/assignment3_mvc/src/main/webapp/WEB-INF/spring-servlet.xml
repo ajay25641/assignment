@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+   http://www.springframework.org/schema/tx 
+   http://www.springframework.org/schema/tx/spring-tx.xsd
+   ">
+
+<!-- xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" -->
+
+	<!-- <tx:annotation-driven /> -->
+
+	<context:component-scan
+		base-package="assignment3_mvc" />
+
+
+	<!-- bean of data source -->
+
+	<bean
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		name="ds">
+
+		<property name="driverClassName"
+			value="org.postgresql.Driver"></property>
+		<property name="url"
+			value="jdbc:postgresql://localhost:5432/testdb"></property>
+		<property name="username" value="postgres"></property>
+		<property name="password" value="postgres"></property>
+
+	</bean>
+
+
+	<!-- bean of localSessionFactoryBean it requires three things 1. datasource 
+		bean 2. hibernate properties 3. annotated class -->
+
+	<bean
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		name="localSessionFactoryBean">
+
+
+
+		<!-- dataSource property -->
+		<property name="dataSource" ref="ds"></property>
+
+		<!-- hibernate properties -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+
+		<!-- annotated class -->
+		<property name="annotatedClasses">
+			<list>
+				<value>
+					assignment3_mvc.Modal.User
+				</value>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean class="org.springframework.orm.hibernate5.HibernateTemplate"
+		name="hibernateTemplate">
+		<property name="sessionFactory" ref="localSessionFactoryBean"></property>
+	</bean>
+
+	<bean class="assignment3_mvc.Repository.UserRepository" name="userRepository">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+
+	<bean
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+		name="hibernateTransactionManager">
+		<property name="sessionFactory" ref="localSessionFactoryBean"></property>
+	</bean>
+
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <?xml version="1.0" encoding="UTF-8"?> <beans:beans xmlns="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd"> <annotation-driven 
+	/> <context:component-scan base-package="assignment3.Controller , assignment3.Modal" 
+	/> bean of data source <beans:bean class="" name="ds"> </beans:bean> bean 
+	of localSessionFactoryBean it requires three things 1. datasource bean 2. 
+	hibernate properties 3. annotated class <beans:bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" 
+	name="localSessionFactoryBean"> <property name="dataSource" ref="ds"></property> 
+	<property></property> </beans:bean> Resolves views selected for rendering 
+	by @Controllers to .jsp resources in the /WEB-INF/views directory <beans:bean 
+	class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+	<beans:property name="prefix" value="/WEB-INF/views/" /> <beans:property 
+	name="suffix" value=".jsp" /> </beans:bean> </beans:beans> -->
