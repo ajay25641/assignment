@@ -33,15 +33,20 @@ public class ContactController {
     }
 
 
-    @RequestMapping(value="/deletePage")
+    @RequestMapping(value="/showDeletePage")
    public ModelAndView displayDeletePage(){
-        ModelAndView modelAndView=new ModelAndView("deletePage");
+        ModelAndView modelAndView=new ModelAndView("showDeletePage");
         return modelAndView;
    }
 
-   public String deleteUser(@RequestParam int id){
+   @RequestMapping(value="/deleteUser")
+   public String deleteUser(@RequestParam(name="employeeId") int id){
+
+
         userService.deleteUser(id);
         return "redirect:home";
    }
+
+
 
 }

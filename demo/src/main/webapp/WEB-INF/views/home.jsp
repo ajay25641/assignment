@@ -24,7 +24,7 @@
 <body>
 
 <div>
-    <div class="container text-center" >
+    <div class="container text-center mt-4" >
         <table class="table">
             <thead>
             <tr>
@@ -37,7 +37,7 @@
             <tbody>
             <c:forEach var="item" items="${userList}">
                 <tr>
-                    <th scope="row">1</th>
+                 <%--   <th scope="row">1</th>--%>
                     <td>${item.employeeId}</td>
                     <td>${item.name}</td>
                     <td>${item.email}</td>
@@ -46,11 +46,13 @@
             </c:forEach>
             </tbody>
         </table>
+        <div>
+            <a href="/demo_war_exploded/contact"><button type="button" class="btn btn-primary">Add Employee</button></a>
+            <a href="/demo_war_exploded/showDeletePage"><button type="button" class="btn btn-primary">Delete</button></a>
+        </div>
     </div>
 
-    <div>
-        <a href="/demo_war_exploded/contact"><button type="button" class="btn btn-primary">Add Employee</button></a>
-    </div>
+
 </div>
 
 

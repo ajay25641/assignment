@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<div class="container ">
+<div class="container mt-4">
     <form action="/demo_war_exploded/submitForm" method="post">
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
@@ -43,16 +43,17 @@
         <div class="form-group">
             <label for="mobile">mobile</label>
             <input
-                    type="text" name="mobile" class="form-control" id="mobile"
+                    type="text" name="mobileNum" class="form-control" id="mobile"
                     placeholder="mobile">
         </div>
         <div class="container text-center">
-            <button type="submit" class="btn btn-primary">Submit</button></div>
-
+            <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/demo_war_exploded/home"><button type="button" class="btn btn-primary">List</button></a>
+        <a href="/demo_war_exploded/showDeletePage"><button type="button" class="btn btn-primary">Delete</button></a>
+        </div>
     </form>
     <div>
-        <a href="/demo_war_exploded/getUserList"><button type="button" class="btn btn-primary">List</button></a>
-        <a href="/demo_war_exploded/deletePage"><button type="button" class="btn btn-primary">Delete</button></a>
+
 
 
     </div>

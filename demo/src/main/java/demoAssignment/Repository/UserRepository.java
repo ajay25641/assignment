@@ -27,8 +27,11 @@ public class UserRepository {
         return usersList;
     }
 
+    @Transactional
     public void deleteUser(int id){
-        this.hibernateTemplate.delete(id);
+        User user=hibernateTemplate.load(User.class,id);
+        System.out.println(user);
+        this.hibernateTemplate.delete(user);
     }
 
 
