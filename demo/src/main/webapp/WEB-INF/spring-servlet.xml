@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="demoAssignment"></context:component-scan>
+
+
+
+    <bean
+            class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+            name="ds">
+
+        <property name="driverClassName"
+                  value="org.postgresql.Driver"></property>
+        <property name="url"
+                  value="jdbc:postgresql://localhost:5432/testdb"></property>
+        <property name="username" value="postgres"></property>
+        <property name="password" value="postgres"></property>
+
+    </bean>
+
+
+    <!-- bean of localSessionFactoryBean it requires three things 1. datasource
+        bean 2. hibernate properties 3. annotated class -->
+
+    <bean
+            class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+            name="localSessionFactoryBean">
+
+        <!--org.hibernate.dialect.PostgreSQLDialect
+-->
+        <!-- dataSource property -->
+        <property name="dataSource" ref="ds"></property>
+
+        <!-- hibernate properties -->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+
+        <!-- annotated class -->
+        <property name="annotatedClasses">
+            <list>
+                <value>
+                    demoAssignment.Modal.User
+                </value>
+            </list>
+        </property>
+
+    </bean>
+
+    <bean class="org.springframework.orm.hibernate5.HibernateTemplate"
+          name="hibernateTemplate">
+        <property name="sessionFactory" ref="localSessionFactoryBean"></property>
+        <property name="checkWriteOperations" value="false"></property>
+    </bean>
+
+    <bean class="demoAssignment.Repository.UserRepository" name="userRepository">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+
+
+    <bean
+            class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+            name="hibernateTransactionManager">
+        <property name="sessionFactory" ref="localSessionFactoryBean"></property>
+    </bean>
+
+
+
+
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="prefix" value="/WEB-INF/views/"/>
+            <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>
