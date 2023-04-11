@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07950b20-f3f9-49f0-862b-287e1a920c65" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/assignment3_mvc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../assignment3_springMVC_Intellij/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../assignment3_springMVC_Intellij/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../assignment3_springMVC_Intellij/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../assignment3_springMVC_Intellij/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../assignment3_springMVC_Intellij/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../assignment3_springMVC_Intellij/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../assignment3_springMVC_Intellij/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment3_mvc/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/assignment3_mvc/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="07950b20-f3f9-49f0-862b-287e1a920c65" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
