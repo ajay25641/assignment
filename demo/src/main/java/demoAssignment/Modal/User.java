@@ -2,7 +2,10 @@ package demoAssignment.Modal;
 
 
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 
 @Entity
@@ -18,6 +21,9 @@ public class User {
 
     @Column(name="name")
     private String name;
+
+    @NotBlank(message = "mobile nuumber should  not be blank")
+    @Pattern(regexp = "[6789][0-9]{9}",message = "mobile no. should be of 10 digits")
     private String mobileNum;
 
     public String getEmail() {
