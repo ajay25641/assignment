@@ -17,7 +17,7 @@ import java.rmi.registry.Registry;
 @ComponentScan(basePackages = {"org.assignment"})
 public class MyWebConfig implements WebMvcConfigurer {
 
-    @Bean
+    /*@Bean
     public InternalResourceViewResolver internalResourceViewResolver(){
 
         String suffix=".jsp";
@@ -31,13 +31,21 @@ public class MyWebConfig implements WebMvcConfigurer {
         //which can be used in html page using <%    %> symbol
         internalResourceViewResolver.setViewClass(JstlView.class);
         return internalResourceViewResolver;
+    }*/
+    @Bean
+    public InternalResourceViewResolver resolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setViewClass(JstlView.class);
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".jsp");
+        return resolver;
     }
 
    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry
                 .addResourceHandler("/resources/**")
-                .addResourceLocations("/WEB-INF/resources/");
+                .addResourceLocations("/resources/");
    }
 
 }

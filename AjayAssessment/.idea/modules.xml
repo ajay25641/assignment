@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AjayAssessment.iml" filepath="$PROJECT_DIR$/AjayAssessment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/AjayAssessment.iml" filepath="$PROJECT_DIR$/.idea/AjayAssessment.iml" />
     </modules>
   </component>
 </project>
