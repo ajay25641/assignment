@@ -4,9 +4,7 @@ package org.assignment.Config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -17,7 +15,7 @@ import java.rmi.registry.Registry;
 @ComponentScan(basePackages = {"org.assignment"})
 public class MyWebConfig implements WebMvcConfigurer {
 
-    /*@Bean
+  /*  @Bean
     public InternalResourceViewResolver internalResourceViewResolver(){
 
         String suffix=".jsp";
@@ -31,7 +29,7 @@ public class MyWebConfig implements WebMvcConfigurer {
         //which can be used in html page using <%    %> symbol
         internalResourceViewResolver.setViewClass(JstlView.class);
         return internalResourceViewResolver;
-    }*/
+    }
     @Bean
     public InternalResourceViewResolver resolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
@@ -39,13 +37,28 @@ public class MyWebConfig implements WebMvcConfigurer {
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
         return resolver;
-    }
+    }*/
 
-   @Override
+/*   @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry
                 .addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
-   }
+   }*/
+
+
+
+
+    @Override
+
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/views/");
+        viewResolver.setSuffix(".jsp");
+        registry.viewResolver(viewResolver);
+    }
+
+
+
 
 }

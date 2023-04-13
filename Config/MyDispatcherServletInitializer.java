@@ -16,10 +16,13 @@ public class MyDispatcherServletInitializer extends AbstractAnnotationConfigDisp
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{MyWebConfig.class};
+        //return null;
     }
 
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
+    
 }

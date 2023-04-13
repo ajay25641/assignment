@@ -19,13 +19,17 @@ public class HotelController {
     private HotelService hotelService;
 
 
-    @RequestMapping(value="/home")
+    @RequestMapping(value="/home",method=RequestMethod.GET)
+
     public ModelAndView displayHomePage(){
         ModelAndView modelAndView=new ModelAndView("home");
 
         List<Hotel> hotelList=hotelService.loadAllHotel();
 
         modelAndView.addObject("hotelList",hotelList);
+
+        System.out.println("reached at controller");
+
 
         return modelAndView;
 
