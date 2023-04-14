@@ -4,6 +4,7 @@ import org.assessment.Modal.Flight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class FlightRepository {
 
 
     //for saving flight detail
+    @Transactional
     public int saveFlightDetails(Flight flight){
         int result =(Integer) this.hibernateTemplate.save(flight);
         return result;

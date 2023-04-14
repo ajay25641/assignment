@@ -8,11 +8,11 @@
   <name>Hotel_java_config Maven Webapp</name>
   <properties>
 
-    <spring.version>5.2.0.RELEASE</spring.version>
-    <hibernate.version>5.2.11.Final</hibernate.version>
+    <spring.version>5.3.23</spring.version>
+    <hibernate.version>5.3.25.Final</hibernate.version>
     <hibernate.validator>5.4.1.Final</hibernate.validator>
     <c3p0.version>0.9.5.2</c3p0.version>
-    <jstl.version>1.2.1</jstl.version>
+    <jstl.version>1.2.2</jstl.version>
     <tld.version>1.1.2</tld.version>
     <servlets.version>3.1.0</servlets.version>
     <jsp.version>2.3.1</jsp.version>
@@ -33,15 +33,16 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>6.0.2</version>
+      <version>${spring.version}</version>
     </dependency>
 
-    <!-- Spring ORM -->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
-      <version>${spring.version}</version>
+      <version>5.3.23</version>
     </dependency>
+
 
     <!-- Hibernate Core -->
     <dependency>
@@ -51,25 +52,25 @@
     </dependency>
 
     <!-- Hibernate-C3P0 Integration -->
-    <dependency>
+   <!-- <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-c3p0</artifactId>
       <version>${hibernate.version}</version>
-    </dependency>
+    </dependency>-->
 
     <!-- c3p0 -->
-    <dependency>
+  <!--  <dependency>
       <groupId>com.mchange</groupId>
       <artifactId>c3p0</artifactId>
       <version>${c3p0.version}</version>
-    </dependency>
+    </dependency>-->
 
     <!-- Hibernate Validator -->
-    <dependency>
+ <!--   <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
       <version>${hibernate.validator}</version>
-    </dependency>
+    </dependency>-->
 
     <!-- JSTL Dependency -->
     <dependency>
@@ -107,12 +108,12 @@
       <version>${hsqldb.version}</version>
     </dependency>
 
-    <dependency>
+   <!-- <dependency>
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
       <version>6.0.0</version>
       <scope>provided</scope>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
